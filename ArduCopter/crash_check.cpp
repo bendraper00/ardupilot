@@ -64,7 +64,7 @@ void Copter::crash_check()
 
     // check for lean angle over 15 degrees
     const float lean_angle_deg = degrees(acosf(ahrs.cos_roll()*ahrs.cos_pitch()));
-    if (lean_angle_deg <= CRASH_CHECK_ANGLE_MIN_DEG) {
+    if (lean_angle_deg <= g2.user_parameters.get_disarmAngle()) {
         crash_counter = 0;
         return;
     }
